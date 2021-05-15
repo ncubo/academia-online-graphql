@@ -1,3 +1,4 @@
+# type query son los tipos para consultas 
 type Query {
     "Lista de los estudiantes de la academia"
     estudiantes: [Estudiante!]!
@@ -7,6 +8,25 @@ type Query {
     cursos: [Curso!]!
      "Información del curso de la academia seleccionado por ID"
     curso(id_curso:ID!): Curso!
+}
+
+# type mutation es para escribir
+type Mutation{
+    cursoNuevo(curso: CursoInput!): Curso!
+    modificarCurso(curso: CursoInput!): Curso!
+    eliminarCurso(id: ID!): Curso! 
+}
+
+input CursoInput{
+    id: ID
+    title: String!
+    description: String!
+    clases: Int!
+    time: Float!
+    logo: String!
+    level: Nivel=TODOS
+    path: String!
+    teacher: String!
 }
 
 "Información de los estudiantes"
